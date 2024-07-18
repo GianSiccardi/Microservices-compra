@@ -1,0 +1,45 @@
+spring:
+  data:
+    mongodb:
+
+      host: localhost
+      port: 27017
+      database: notification
+      authentication-database: admin
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: paymentGroup,orderGroup
+
+      properties:
+        spring:
+          kafka:
+            consumer:
+              json:
+                trusted:
+                  packages: '*'
+                type:
+                  mapping:
+                    orderConfirmation: com.giansiccardi.order.kafka.OrderConfirmation
+                    paymentConfirmation: com.giansiccardi.notification.PaymentNotification
+              key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+              value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+
+
+  mail:
+    host: localhost
+    port: 1025
+    username: root
+    password: root
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+server:
+  port: 8040

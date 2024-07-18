@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Orden</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+        }
+        .footer {
+            background-color: #f4f4f4;
+            color: #777;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .details, .products {
+            margin: 20px 0;
+        }
+        .details p, .products p {
+            margin: 5px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Confirmación de Orden</h1>
+    </div>
+    <div class="content">
+        <p>Hola <strong th:text="${order.client.name}">Cliente</strong>,</p>
+        <p>Gracias por tu compra. A continuación, encontrarás los detalles de tu orden:</p>
+        <div class="details">
+            <p><strong>Referencia de la Orden:</strong> <span th:text="${orderReference}">Referencia de la Orden</span></p>
+            <p><strong>Monto Total:</strong> <span th:text="${totalAmount}">Monto Total</span></p>
+        </div>
+        <div class="products">
+            <h2>Productos</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.name}">Nombre del Producto</td>
+                    <td th:text="${product.quantity}">Cantidad</td>
+                    <td th:text="${product.price}">Precio</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
+        <a href="#" class="btn">Contactar Soporte</a>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+    </div>
+</div>
+</body>
+</html>

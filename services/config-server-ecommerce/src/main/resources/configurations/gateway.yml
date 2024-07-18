@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: client
+          uri: lb://CLIENT
+          predicates:
+            - Path=/clients/**
+        - id: order
+          uri: lb://ORDER
+          predicates:
+            - Path=/orders/**
+        - id: order-lines
+          uri: lb://ORDER
+          predicates:
+            - Path=/order-lines/**
+        - id: product
+          uri: lb://PRODUCT
+          predicates:
+            - Path=/products/**
+        - id: payment
+          uri: lb://PAYMENT
+          predicates:
+            - Path=/payments/**
+
+server:
+  port: 8222
+

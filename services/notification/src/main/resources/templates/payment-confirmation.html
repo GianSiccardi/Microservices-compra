@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Pago</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+        }
+        .footer {
+            background-color: #f4f4f4;
+            color: #777;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .details {
+            margin: 20px 0;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Confirmación de Pago</h1>
+    </div>
+    <div class="content">
+        <p>Hola <strong th:text="${clientName}">Cliente</strong>,</p>
+        <p>Gracias por tu pago. A continuación, encontrarás los detalles de tu transacción:</p>
+        <div class="details">
+            <p><strong>Nombre del Cliente:</strong> <span th:text="${clientName}">Nombre del Cliente</span></p>
+            <p><strong>Monto:</strong> <span th:text="${amount}">Monto</span></p>
+            <p><strong>Referencia de la Orden:</strong> <span th:text="${orderReference}">Referencia de la Orden</span></p>
+        </div>
+        <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
+        <a href="#" class="btn">Contactar Soporte</a>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+    </div>
+</div>
+</body>
+</html>
